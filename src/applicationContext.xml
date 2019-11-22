@@ -2,7 +2,34 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="userDAO" class="cn.xyy.dao.CustomerDAO" />
-    <bean id="userService" class="cn.xyy.service.UserService"> <property name="customerDAO" ref="userDAO" /> </bean>
-
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/hibernatedb?serverTimezone=UTC&amp;useSSL=false"/>
+        <property name="username" value="root"/>
+        <property name="password" value="wykbjdy999"/>
+    </bean>
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect"> org.hibernate.dialect.MySQLDialect </prop>
+                <prop key="connection.autocommit">true</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.use_sql_comments">true</prop>
+            </props>
+        </property>
+        <property name="mappingResources">
+            <list>
+                <value>cn/xyy/po/CustomerhellosshEntity.hbm.xml</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="baseDAO" class="cn.xyy.dao.BaseHibernateDAO">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <bean id="userDAO" class="cn.xyy.dao.CustomerDAO" parent="baseDAO"/>
+    <bean id="userService" class="cn.xyy.service.UserService">
+        <property name="customerDAO" ref="userDAO"/>
+    </bean>
 </beans>

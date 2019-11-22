@@ -1,11 +1,24 @@
 package cn.xyy.dao;
 
-public class CustomerDAO implements ICustomerDAO {
-    public CustomerDAO() {
-        System.out.println("create CustomerDao.");
-    }
-    public void save() {
-        System.out.println("execute --save()-- method.");
-    }
+import cn.xyy.po.CustomerhellosshEntity;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
+public class CustomerDAO extends BaseHibernateDAO implements ICustomerDAO {
+    @Override
+    public void save(CustomerhellosshEntity transientInstance) {
+        Transaction tran = null;
+        Session session = null;
+        try {
+            session = getSession();
+            tran = session.beginTransaction();
+            session.save(transientInstance);
+            tran.commit();
+        } catch (RuntimeException re) {
+            if (tran != null) tran.rollback();
+            throw re;
+        } finally {
+            session.close();
+        }
+    }
 }

@@ -1,8 +1,9 @@
 package cn.xyy.service;
 
 import cn.xyy.dao.ICustomerDAO;
+import cn.xyy.po.CustomerhellosshEntity;
 
-public class UserService {
+public class UserService implements IUserService{
     private ICustomerDAO customerDAO = null;
     public UserService(){
         System.out.println("create UserService.");
@@ -11,8 +12,10 @@ public class UserService {
         System.out.println("--setCustomerDAO--");
         this.customerDAO = customerDAO;
     }
-    public void register() {
+
+    @Override
+    public void register(CustomerhellosshEntity customer) {
         System.out.println("execute --register()-- method.");
-        customerDAO.save();
+        customerDAO.save(customer);
     }
 }
