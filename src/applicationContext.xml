@@ -3,4 +3,6 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="userDAO" class="cn.xyy.dao.CustomerDAO" />
+    <bean id="userService" class="cn.xyy.service.UserService"> <property name="customerDAO" ref="userDAO" /> </bean>
+
 </beans>
