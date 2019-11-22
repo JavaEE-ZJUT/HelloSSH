@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="structs2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/structs2/commons-fileupload-1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/structs2/commons-io.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/structs2/commons-lang3-3.8.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/structs2/freemarker-2.3.28.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/structs2/javassist-3.20.0-GA.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/structs2/log4j-api-2.11.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/structs2/log4j-core-2.11.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/structs2/ognl-3.1.21.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/structs2/struts2-core-2.5.20.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/structs2/struts2-dojo-plugin-2.3.16.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

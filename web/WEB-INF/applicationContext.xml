@@ -32,4 +32,7 @@
     <bean id="userService" class="cn.xyy.service.UserService">
         <property name="customerDAO" ref="userDAO"/>
     </bean>
+    <bean id="userAction" class="cn.xyy.action.UserAction" scope="prototype">
+        <property name="userService" ref="userService" />
+    </bean>
 </beans>
