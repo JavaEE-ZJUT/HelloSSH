@@ -1,11 +1,14 @@
 import cn.xyy.bean.IItem;
 import cn.xyy.bean.Item;
 import cn.xyy.bean.ItemOrder;
+import cn.xyy.bean.ShoppingCart;
 import cn.xyy.dao.ICustomerDAO;
 import cn.xyy.service.IUserService;
 import cn.xyy.service.UserService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,5 +30,20 @@ public class Main {
         ItemOrder itemorder2 = (ItemOrder) ctx.getBean("itemorder2");
         System.out.println("书名： "+itemorder2.getItem().getTitle());
         System.out.println("数量：" + itemorder2.getNumItems());
+
+        ShoppingCart cart = (ShoppingCart) ctx.getBean("shoppingcart");
+        List cartList = cart.getItemsOrdered();
+        for (int i = 0; i < cartList.size(); i ++) {
+            ItemOrder itemOrder = (ItemOrder) cartList.get(i);
+            Item item = itemOrder.getItem();
+            System.out.println("书号：" + item.getItemID());
+            System.out.println("书名：" + item.getTitle());
+            System.out.println("价格：" + item.getCost());
+            System.out.println("描述：" + item.getDescription());
+
+            System.out.println("购买数量：" + itemOrder.getNumItems());
+            System.out.println("总价：" + itemOrder.getTotalCost());
+        }
+
     }
 }

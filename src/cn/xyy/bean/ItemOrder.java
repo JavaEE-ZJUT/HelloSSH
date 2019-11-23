@@ -3,14 +3,14 @@ package cn.xyy.bean;
 public class ItemOrder implements IItemOrder{
     private Item item;
     private int numItems;
-    private int unitCost;
+    private double unitCost;
 
     public Item getItem() { return item; }
     public void setItem(Item item) { this.item = item; }
     public int getNumItems() { return numItems; }
     public void setNumItems(int numItems) { this.numItems = numItems; }
-    public int getUnitCost() { return unitCost; }
-    public void setUnitCost(int unitCost) { this.unitCost = unitCost; }
+    public double getUnitCost() { return this.item.getCost(); }
+    public void setUnitCost(double unitCost) { this.unitCost = unitCost; }
 
     public void incrementNumItems() {
         setNumItems(getNumItems() + 1);

@@ -48,4 +48,12 @@
             <ref bean="item2"/>
         </property>
     </bean>
+    <bean id="shoppingcart" class="cn.xyy.bean.ShoppingCart">
+        <property name="itemsOrdered">
+            <list>
+                <ref bean="itemorder1"/>
+                <ref bean="itemorder2"/>
+            </list>
+        </property>
+    </bean>
 </beans>
