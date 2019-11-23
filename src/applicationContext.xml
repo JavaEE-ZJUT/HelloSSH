@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="userDAO" class="cn.xyy.dao.CustomerDAO" />
     <bean id="userService" class="cn.xyy.service.UserService"> <property name="customerDAO" ref="userDAO" /> </bean>
-    <bean id="item1" class="cn.xyy.bean.Item">
+    <bean id="item1" class="cn.xyy.bean.Item" scope="singleton">
         <constructor-arg index="0" type="java.lang.String">
             <value>978-7-121-12345-1</value>
         </constructor-arg>
@@ -18,7 +18,7 @@
             <value>19.95</value>
         </constructor-arg>
     </bean>
-    <bean id="item2" class="cn.xyy.bean.Item">
+    <bean id="item2" class="cn.xyy.bean.Item" scope="prototype">
         <constructor-arg index="0" type="java.lang.String">
             <value>978-7-121-12345-2</value>
         </constructor-arg>
@@ -32,7 +32,7 @@
             <value>29.95</value>
         </constructor-arg>
     </bean>
-    <bean id="itemorder1" class="cn.xyy.bean.ItemOrder">
+    <bean id="itemorder1" class="cn.xyy.bean.ItemOrder" init-method="init">
         <property name="numItems">
             <value>1</value>
         </property>
@@ -40,7 +40,7 @@
             <ref bean="item1"/>
         </property>
     </bean>
-    <bean id="itemorder2" class="cn.xyy.bean.ItemOrder">
+    <bean id="itemorder2" class="cn.xyy.bean.ItemOrderFactory" factory-method="createItemOrder">
         <property name="numItems">
             <value>2</value>
         </property>
@@ -54,6 +54,17 @@
                 <ref bean="itemorder1"/>
                 <ref bean="itemorder2"/>
             </list>
+        </property>
+    </bean>
+
+    <bean id="itemorderFactory2" class="cn.xyy.bean.ItemOrderFactory2"/>
+
+    <bean id="itemorder3" class="cn.xyy.bean.ItemOrder" factory-method="createItemOrder" factory-bean="itemorderFactory2">
+        <property name="numItems">
+            <value>1</value>
+        </property>
+        <property name="item">
+            <ref bean="item1"/>
         </property>
     </bean>
 </beans>
