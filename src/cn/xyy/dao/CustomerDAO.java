@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class CustomerDAO extends BaseHibernateDAO implements ICustomerDAO {
+    public CustomerDAO() {System.out.println("create CustomerDAO.");}
     @Override
     public void save(CustomerhellosshEntity transientInstance) {
         Transaction tran = null;

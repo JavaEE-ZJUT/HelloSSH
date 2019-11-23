@@ -12,7 +12,7 @@
     <title>注册</title>
 </head>
 <body>
-<s:form action="register" method="post">
+<s:form action="register" method="post" namespace="/">
     <s:textfield name="loginUser.account" label="请输入用户名"/>
     <s:password name="loginUser.password" label="请输入密码"/>
     <s:submit value="注册"/>

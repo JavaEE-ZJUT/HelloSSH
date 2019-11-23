@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 public class BaseHibernateDAO {
+    public BaseHibernateDAO() {System.out.println("create BaseDAO.");}
     private SessionFactory sessionFactory;
     public Session getSession(){
         return sessionFactory.openSession();

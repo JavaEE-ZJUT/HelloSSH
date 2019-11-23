@@ -7,12 +7,12 @@
           <element id="module-output" name="untitled" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Hibernate 5.4.9-5.4.9" />
-          <element id="library" level="project" name="mysql-connector-java-8.0.15" />
-          <element id="library" level="project" name="Spring-4.3.18.RELEASE" />
           <element id="library" level="project" name="structs2" />
-          <element id="library" level="project" name="spring-web-4.0.0.RELEASE" />
-          <element id="library" level="project" name="struts2-spring-plugin-2.3.15.1" />
+          <element id="library" level="project" name="Spring-4.3.18.RELEASE" />
+          <element id="library" level="project" name="mysql-connector-java-8.0.15" />
+          <element id="library" level="project" name="Hibernate 5.4.9-5.4.9" />
+          <element id="library" level="project" name="struts2-spring-plugin-2.5.10.1" />
+          <element id="library" level="project" name="spring-web-4.3.18.RELEASE" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="untitled/web/Web" />

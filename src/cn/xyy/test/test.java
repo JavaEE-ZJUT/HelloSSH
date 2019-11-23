@@ -1,16 +1,19 @@
-package cn.xyy.action;
+package cn.xyy.test;
 
 import cn.xyy.po.CustomerhellosshEntity;
-import cn.xyy.service.IUserService;
+import cn.xyy.service.UserService;
 
-public class UserAction {
+public class test {
+    public test() {
+        System.out.println("test");
+    }
     private CustomerhellosshEntity loginUser;
     public CustomerhellosshEntity getLoginUser() { return loginUser; }
     public void setLoginUser(CustomerhellosshEntity loginUser) { this.loginUser = loginUser; }
 
-    IUserService userService = null;
-    public IUserService getUserService() { return userService; }
-    public void setUserService(IUserService userService) {
+    private UserService userService;
+    public void setUserService(UserService userService) {
+        System.out.println("-- set userService to action--");
         this.userService = userService;
     }
 

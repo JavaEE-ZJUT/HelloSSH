@@ -30,9 +30,12 @@
     </bean>
     <bean id="userDAO" class="cn.xyy.dao.CustomerDAO" parent="baseDAO"/>
     <bean id="userService" class="cn.xyy.service.UserService">
-        <property name="customerDAO" ref="userDAO"/>
+        <property name="userDAO" ref="userDAO"/>
     </bean>
-    <bean id="userAction" class="cn.xyy.action.UserAction" scope="prototype">
-        <property name="userService" ref="userService" />
+<!--    <bean id="userAction" class="cn.xyy.action.UserAction1" scope="prototype">-->
+<!--        <property name="userService" ref="userService" />-->
+<!--    </bean>-->
+    <bean id="test" class="cn.xyy.test.test">
+        <property name="userService" ref="userService"/>
     </bean>
 </beans>
