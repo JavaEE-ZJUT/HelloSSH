@@ -6,7 +6,7 @@
 
 <struts>
     <package name="strutsBean" extends="struts-default" namespace="/">
-        <action name="register" class="test">
+        <action name="register" class="userAction">
             <result name="success">/regSuccess.jsp</result>
             <result name="fail">/regFail.jsp</result>
         </action>
