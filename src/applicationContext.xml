@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd"
+       xmlns:aop="http://www.springframework.org/schema/aop" >
+
+    <!-- 启动使用注解配置AOP支持 -->
+    <aop:aspectj-autoproxy />
+    <bean id="securityHandler" class="cn.xyy.aspect.SecurityHandler" />
     <bean id="userDAO" class="cn.xyy.dao.CustomerDAO" />
     <bean id="userService" class="cn.xyy.service.UserService">
         <property name="customerDAO" ref="userDAO" />
     </bean>
 
+    <bean id="securityHandler2" class="cn.xyy.aspect.SecurityHandler2" />
+    <!-- 配置文件的方式 -->
+    <aop:config>
+        <aop:aspect id="security" ref="securityHandler2">
+            <aop:pointcut id="modify" expression="execution(* *.add*(..))" />
+            <aop:before method="checkSecurity" pointcut-ref="modify" />
+        </aop:aspect>
+    </aop:config>
 </beans>
