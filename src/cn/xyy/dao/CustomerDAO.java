@@ -7,18 +7,11 @@ import org.hibernate.Transaction;
 public class CustomerDAO extends BaseHibernateDAO implements ICustomerDAO {
     @Override
     public void save(CustomerhellosshEntity transientInstance) {
-        Transaction tran = null;
-        Session session = null;
+        System.out.println("execute --save()-- method.");
         try {
-            session = getSession();
-            tran = session.beginTransaction();
-            session.save(transientInstance);
-            tran.commit();
+            getSession().save(transientInstance);
         } catch (RuntimeException re) {
-            if (tran != null) tran.rollback();
             throw re;
-        } finally {
-            session.close();
         }
     }
 }

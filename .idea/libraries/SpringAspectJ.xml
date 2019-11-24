@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="SpringAspectJ">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/springAspectJ/aopalliance-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/springAspectJ/aspectjweaver-1.9.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/springAspectJ/aspectj-1.9.4.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/lib/springAspectJ/aspectj-1.9.4.jar!/files/doc/runtime-apidocs" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/springAspectJ/aspectj-1.9.4.jar!/files/doc/examples" />
+      <root url="jar://$PROJECT_DIR$/lib/springAspectJ/aspectj-1.9.4.jar!/files/doc/examples/ltw" />
+    </SOURCES>
+  </library>
+</component>
