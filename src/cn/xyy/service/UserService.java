@@ -19,4 +19,10 @@ public class UserService implements IUserService{
         System.out.println("execute --register()-- method.");
         customerDAO.save(customer);
     }
+
+    @Override
+    public void addUser(CustomerhellosshEntity cust) {
+        System.out.println("execute --addUser()-- method.");
+        customerDAO.save(cust);
+    }
 }

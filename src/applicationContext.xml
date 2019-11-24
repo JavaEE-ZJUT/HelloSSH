@@ -36,17 +36,15 @@
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
     <bean id="userDAO" class="cn.xyy.dao.CustomerDAO" parent="baseDAO"/>
-    <bean id="userService" class="cn.xyy.service.UserService">
+    <bean id="userService" class="cn.xyy.service.UserService" >
         <property name="customerDAO" ref="userDAO"/>
     </bean>
 
     <!-- 使用Spring的声明式事务 -->
-
     <!-- 1、配置事务管理器 -->
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-
     <!-- 2、配置事务通知 -->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
@@ -57,10 +55,31 @@
             <tx:method name="*" read-only="true" />
         </tx:attributes>
     </tx:advice>
-
     <!-- 3、配置事务切点，并且将事务切点和事务通知关联起来。 -->
     <aop:config>
         <aop:pointcut expression="execution(* cn.xyy.service.*.*(..))" id="txPointcut"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
     </aop:config>
+
+<!--    &lt;!&ndash; 增强处理定义 &ndash;&gt;-->
+<!--    <bean id="logAdvice" class="cn.xyy.advice.LoggingAdvice" />-->
+    <!-- 增强处理定义 -->
+    <bean id="logAdvice" class="cn.xyy.advice.LoggingAdvice2" />
+    <!-- 增强处理定义 --> <bean id="logInterceptor" class="cn.xyy.advice.LoggingInterceptor" />
+
+    <!--设定代理-->
+    <bean id="logProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <!--设定代理的是接口-->
+        <property name="proxyInterfaces" value="cn.xyy.service.IUserService"/>
+        <!--设定代理的目标类-->
+        <property name="target" ref="userService" />
+        <!--设定切入的Advice-->
+        <property name="interceptorNames">
+            <list>
+                <value>logAdvice</value>
+                <value>logInterceptor</value>
+            </list>
+        </property>
+    </bean>
+
 </beans>
